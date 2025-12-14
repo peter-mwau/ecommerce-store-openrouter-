@@ -12,5 +12,6 @@ export const runner = async (model, messages) => {
     return await openRouter.chat.send({
         model: model,
         messages: messages,
+        max_tokens: 1000,
     });
 };

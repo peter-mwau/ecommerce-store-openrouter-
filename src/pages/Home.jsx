@@ -2,6 +2,8 @@ import React from "react";
 import SearchBar from "../components/SearchBar";
 
 function Home() {
+  const p = import.meta.env.VITE_OPENROUTER_API_KEY;
+  console.log("OpenRouter API Key:", p);
   return (
     <div>
       <h2 className="text-3xl font-semibold mt-6">

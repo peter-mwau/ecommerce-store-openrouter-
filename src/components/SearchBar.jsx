@@ -18,7 +18,14 @@ function SearchBar(props) {
     }
 
     try {
-      const response = await runner(model, message);
+      const messages = [
+        {
+          role: "system",
+          content: "You are a helpful assistant for an e-commerce store.",
+        },
+        { role: "user", content: message },
+      ];
+      const response = await runner(model, messages);
       console.log("OpenRouter Response:", response);
       toast.success("Search completed successfully!");
       // Handle the response as needed, e.g., update state or display results
@@ -31,17 +38,17 @@ function SearchBar(props) {
   };
 
   return (
-    <div>
+    <div className="flex flex-row gap-4 my-auto rounded-lg p-2">
       <input
         type="text"
         placeholder="Search products..."
-        className="border p-2 w-full"
+        className="p-2 w-full bg-amber-50 border rounded-lg"
         value={message}
         onChange={(e) => setMessage(e.target.value)}
       />
       <button
-        className="bg-purple-500 text-white p-2 mt-2"
-        onClick={handleSearch()}
+        className="bg-purple-500 text-white p-2 my-auto rounded-lg hover:bg-purple-600 disabled:opacity-50 hover:cursor-pointer"
+        onClick={handleSearch}
       >
         <Search />
       </button>
